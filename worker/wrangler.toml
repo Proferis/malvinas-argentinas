@@ -1,0 +1,15 @@
+name = "prometeo-contador"
+main = "contador-worker.js"
+compatibility_date = "2026-01-01"
+
+# Creá el namespace con:  npx wrangler kv namespace create CONTADOR
+# y pegá el id que devuelve.
+[[kv_namespaces]]
+binding = "CONTADOR"
+id = "PEGAR_ID_DEL_NAMESPACE"
+
+[vars]
+ORIGEN = "https://tu-sitio.ar"
+
+# La sal para hashear IPs va como secreto, no acá:
+#   npx wrangler secret put SAL

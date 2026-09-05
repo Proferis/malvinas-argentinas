@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor de widget · Prometeo</title>
+<meta name="description" content="Configurá el widget de Prometeo para OBS o para embeber en cualquier sitio.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/builder.css">
+<script>
+(function (d) {
+  d.documentElement.classList.add("js");
+  try {
+    var t = localStorage.getItem("bm:tema");
+    if (t) d.documentElement.dataset.theme = t;
+    var f = localStorage.getItem("bm:tipografia");
+    d.documentElement.dataset.tipografia = f === "bandera" ? "bandera" : "original";
+  } catch (e) { /* modo privado */ }
+})(document);
+</script>
+</head>
+<body>
+
+<a class="saltar" href="#contenido" data-i18n="saltar">Ir al contenido</a>
+
+<header class="topbar">
+  <a class="marca" href="./">
+    <span class="marca-logo" aria-hidden="true"></span>
+    <span class="marca-nombre" data-i18n="marca.nombre">Prometeo</span>
+  </a>
+  <nav><a href="./" data-i18n="builder.volver">Volver al sitio</a></nav>
+  <div class="controles">
+    <div class="pastilla" role="group" data-i18n-attr="aria-label:control.idioma" aria-label="Cambiar idioma">
+      <button type="button" data-idioma="es" aria-pressed="true">ES</button>
+      <button type="button" data-idioma="en" aria-pressed="false">EN</button>
+    </div>
+    <div class="pastilla" role="group" data-i18n-attr="aria-label:control.tema" aria-label="Cambiar entre modo día y noche">
+      <button type="button" data-tema="claro" aria-pressed="true" data-i18n="control.dia">Día</button>
+      <button type="button" data-tema="oscuro" aria-pressed="false" data-i18n="control.noche">Noche</button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido" class="envoltorio">
+  <div class="seccion-cabecera" style="padding-top:44px">
+    <p class="etiqueta" data-i18n="widget.eyebrow">Para embeber</p>
+    <h2 data-i18n="builder.titulo">Editor de widget</h2>
+    <p class="seccion-bajada" data-i18n="builder.bajada">Armá tu versión, mirala en vivo y copiá el código. Nada de esto se guarda en ningún servidor: la configuración viaja en la propia URL.</p>
+  </div>
+
+  <div class="editor">
+    <form class="panel tarjeta" id="form-widget">
+      <fieldset>
+        <legend data-i18n="builder.modo">Qué muestra</legend>
+        <label><input type="radio" name="modo" value="cronometro" checked> <span data-i18n="builder.modo.cronometro">Cronómetro</span></label>
+        <label><input type="radio" name="modo" value="mercado"> <span data-i18n="builder.modo.mercado">Resultado del mercado</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="builder.tema">Tema</legend>
+        <label><input type="radio" name="tema" value="auto" checked> <span data-i18n="builder.tema.auto">Automático</span></label>
+        <label><input type="radio" name="tema" value="claro"> <span data-i18n="builder.tema.claro">Claro</span></label>
+        <label><input type="radio" name="tema" value="oscuro"> <span data-i18n="builder.tema.oscuro">Oscuro</span></label>
+        <label><input type="radio" name="tema" value="transparente"> <span data-i18n="builder.tema.transparente">Transparente (OBS)</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="builder.idioma">Idioma del widget</legend>
+        <label><input type="radio" name="idioma" value="es" checked> Español</label>
+        <label><input type="radio" name="idioma" value="en"> English</label>
+      </fieldset>
+
+      <fieldset id="grupo-unidades">
+        <legend data-i18n="builder.unidades">Unidades visibles</legend>
+        <label><input type="checkbox" name="unidades" value="anios" checked> <span data-i18n="unidad.anios">años</span></label>
+        <label><input type="checkbox" name="unidades" value="meses" checked> <span data-i18n="unidad.meses">meses</span></label>
+        <label><input type="checkbox" name="unidades" value="semanas" checked> <span data-i18n="unidad.semanas">semanas</span></label>
+        <label><input type="checkbox" name="unidades" value="dias" checked> <span data-i18n="unidad.dias">días</span></label>
+        <label><input type="checkbox" name="unidades" value="horas"> <span data-i18n="unidad.horas">horas</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="builder.fuente">Tipografía de las cifras</legend>
+        <label><input type="radio" name="fuente" value="mono" checked> <span data-i18n="builder.fuente.mono">Monoespaciada</span></label>
+        <label><input type="radio" name="fuente" value="sans"> <span data-i18n="builder.fuente.sans">Sans</span></label>
+        <label><input type="radio" name="fuente" value="display"> <span data-i18n="builder.fuente.display">Display</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="builder.tamano">Tamaño</legend>
+        <label><input type="radio" name="tamano" value="s"> <span data-i18n="builder.tamano.s">Chico</span></label>
+        <label><input type="radio" name="tamano" value="m" checked> <span data-i18n="builder.tamano.m">Medio</span></label>
+        <label><input type="radio" name="tamano" value="l"> <span data-i18n="builder.tamano.l">Grande</span></label>
+      </fieldset>
+
+      <fieldset class="fila">
+        <legend data-i18n="builder.acento">Color de acento</legend>
+        <input type="color" name="acento" value="#1C6BA0" aria-label="Color de acento">
+        <output id="valor-acento" class="mono">#1C6BA0</output>
+      </fieldset>
+
+      <fieldset class="fila">
+        <legend data-i18n="builder.medidas">Medidas del iframe</legend>
+        <label class="medida"><span data-i18n="builder.ancho">Ancho</span> <input type="number" name="ancho" value="380" min="160" max="1200" step="10"></label>
+        <label class="medida"><span data-i18n="builder.alto">Alto</span> <input type="number" name="alto" value="150" min="80" max="800" step="10"></label>
+      </fieldset>
+    </form>
+
+    <div class="panel">
+      <p class="etiqueta" data-i18n="builder.vista">Vista previa</p>
+      <div class="marco-vista" id="marco-vista">
+        <iframe id="vista" title="Vista previa del widget" src="widget.html"></iframe>
+      </div>
+
+      <p class="etiqueta separador" data-i18n="builder.urlObs">URL para OBS (Fuente de navegador)</p>
+      <code class="snippet" id="salida-url"></code>
+      <div class="fila-copiar">
+        <button type="button" class="boton chico" data-copiar="#salida-url" data-i18n="widget.copiar">Copiar</button>
+      </div>
+
+      <p class="etiqueta separador" data-i18n="builder.snippet">Código para tu web</p>
+      <code class="snippet" id="salida-iframe"></code>
+      <div class="fila-copiar">
+        <button type="button" class="boton chico" data-copiar="#salida-iframe" data-i18n="widget.copiar">Copiar</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="envoltorio pie-fila">
+    <span data-i18n="pie.aviso">Sitio ciudadano independiente. No es un canal oficial del Estado argentino.</span>
+    <a href="./" data-i18n="builder.volver">Volver al sitio</a>
+  </div>
+</footer>
+
+<script src="data/config.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/builder.js"></script>
+</body>
+</html>

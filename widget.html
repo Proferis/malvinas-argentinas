@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="claro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Widget · Prometeo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="assets/css/widget.css">
+</head>
+<body>
+
+<div class="marco" id="marco">
+  <p class="w-kicker" id="w-kicker"></p>
+
+  <div id="bloque-cronometro" hidden>
+    <div class="w-unidades" id="w-unidades"></div>
+    <div class="w-reloj" id="w-reloj">00:00:00</div>
+  </div>
+
+  <div id="bloque-mercado" hidden>
+    <p class="w-pregunta" id="w-pregunta"></p>
+    <div class="w-leyenda">
+      <span class="par"><i class="w-punto si"></i><span id="w-et-si">Sí</span> <b id="w-pct-si">50%</b></span>
+      <span class="par"><i class="w-punto no"></i><span id="w-et-no">No</span> <b id="w-pct-no">50%</b></span>
+    </div>
+    <div class="w-grafico" id="w-grafico" role="img">
+      <div class="seg si" id="w-barra-si" style="width:50%"></div>
+      <div class="seg no" id="w-barra-no" style="width:50%"></div>
+    </div>
+    <p class="w-pie" id="w-pie"></p>
+  </div>
+</div>
+
+<script src="data/config.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/tiempo.js"></script>
+<script src="assets/js/contador.js"></script>
+<script src="assets/js/mercado.js"></script>
+<script src="assets/js/widget.js"></script>
+</body>
+</html>

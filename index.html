@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prometeo · Bitácora de promesas</title>
+<meta name="description" content="Prometeo cuenta el tiempo desde el anuncio presidencial sobre las Islas Malvinas, reúne las novedades oficiales y sigue día a día la probabilidad de que la promesa se cumpla.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>
+/* Tema, tipografía y marca de JS antes del primer pintado: si esto esperara a
+   los scripts del final, la página parpadearía en claro y luego saltaría. */
+(function (d) {
+  d.documentElement.classList.add("js");
+  try {
+    var t = localStorage.getItem("bm:tema");
+    if (t) d.documentElement.dataset.theme = t;
+    var f = localStorage.getItem("bm:tipografia");
+    d.documentElement.dataset.tipografia = f === "bandera" ? "bandera" : "original";
+  } catch (e) { /* modo privado */ }
+})(document);
+</script>
+</head>
+<body>
+
+<div class="barra-progreso" id="progreso" aria-hidden="true"></div>
+
+<a class="saltar" href="#contenido" data-i18n="saltar">Ir al contenido</a>
+
+<header class="topbar" id="topbar">
+  <a class="marca" href="./">
+    <span class="marca-logo" aria-hidden="true"></span>
+    <span class="marca-texto">
+      <span class="marca-nombre" data-i18n="marca.nombre">Prometeo</span>
+      <span class="marca-bajada" data-i18n="marca.bajada">Bitácora de promesas</span>
+    </span>
+  </a>
+
+  <nav data-i18n-attr="aria-label:nav.etiqueta" aria-label="Secciones del sitio">
+    <a href="#cronometro" data-i18n="nav.cronometro">Cronómetro</a>
+    <a href="#probabilidad" data-i18n="nav.probabilidad">Probabilidad</a>
+    <a href="#mercado" data-i18n="nav.mercado">Participar</a>
+    <a href="#novedades" data-i18n="nav.novedades">Novedades</a>
+    <a href="#widget" data-i18n="nav.widget">Widget</a>
+  </nav>
+
+  <div class="controles">
+    <div class="pastilla" role="group" data-i18n-attr="aria-label:control.tipografia" aria-label="Cambiar la tipografía de la página">
+      <button type="button" data-tipografia="original" aria-pressed="true" data-i18n="control.tipoOriginal">Aa</button>
+      <button type="button" data-tipografia="bandera" aria-pressed="false" data-i18n="control.tipoBandera">Trapo</button>
+    </div>
+    <div class="pastilla" role="group" data-i18n-attr="aria-label:control.tema" aria-label="Cambiar entre modo día y noche">
+      <button type="button" data-tema="claro" aria-pressed="true" data-i18n="control.dia">Día</button>
+      <button type="button" data-tema="oscuro" aria-pressed="false" data-i18n="control.noche">Noche</button>
+    </div>
+  </div>
+</header>
+
+<div class="cinta" id="cinta" hidden>
+  <div class="cinta-pista" id="cinta-pista"></div>
+</div>
+
+<main id="contenido" class="envoltorio">
+
+  <section class="hero" id="cronometro">
+    <figure class="bandera" data-revelar>
+      <span class="trazo" data-i18n="banner.linea1">Las Malvinas</span>
+      <span class="trazo" data-i18n="banner.linea2">son argentinas</span>
+      <figcaption class="pie-tela" data-i18n="banner.pie">Recreación de la bandera que los jugadores de la Selección desplegaron tras vencer a Inglaterra en el Mundial 2026.</figcaption>
+    </figure>
+
+    <div data-revelar>
+      <p class="etiqueta hero-kicker" data-i18n="hero.eyebrow">Registro en curso</p>
+      <h1>
+        <span data-i18n="hero.kicker">Tiempo sin recuperar las Islas Malvinas</span>
+        <span class="desde" data-i18n="hero.desde">desde el anuncio presidencial por cadena nacional</span>
+      </h1>
+
+      <div class="tiles">
+        <div class="tile"><span class="cifra" id="u-anios">0</span><span class="etiqueta" id="l-anios">años</span></div>
+        <div class="tile"><span class="cifra" id="u-meses">0</span><span class="etiqueta" id="l-meses">meses</span></div>
+        <div class="tile"><span class="cifra" id="u-semanas">0</span><span class="etiqueta" id="l-semanas">semanas</span></div>
+        <div class="tile"><span class="cifra" id="u-dias">0</span><span class="etiqueta" id="l-dias">días</span></div>
+      </div>
+
+      <div class="reloj-fila">
+        <span id="reloj" data-i18n-attr="aria-label:hero.relojEtiqueta" aria-label="Horas, minutos y segundos transcurridos">00:00:00</span>
+        <span id="resumen-tiempo"></span>
+      </div>
+
+      <div class="ancla-nota">
+        <span data-i18n="hero.ancla">3 de septiembre de 2026, 21:00 (hora de Argentina)</span>
+        <a href="https://www.argentina.gob.ar/noticias/cadena-nacional-del-presidente-javier-milei-sobre-la-causa-malvinas" target="_blank" rel="noopener noreferrer" data-i18n="hero.fuente">Ver el anuncio oficial</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="probabilidad" data-revelar>
+    <div class="seccion-cabecera">
+      <p class="etiqueta" data-i18n="prob.eyebrow">Modelo abierto</p>
+      <h2 data-i18n="prob.titulo">Probabilidad de que la promesa se cumpla</h2>
+      <p class="seccion-bajada" data-i18n="prob.bajada">Una curva diaria desde el anuncio, armada con dos insumos públicos: cómo vota la gente acá y qué hace el Estado. No es un pronóstico ni una medición: es una fórmula abierta, y abajo está entera.</p>
+    </div>
+
+    <div class="tarjeta">
+      <div class="prob-cabecera">
+        <div>
+          <p class="etiqueta" data-i18n="prob.hoy">Hoy</p>
+          <span class="prob-cifra" id="prob-actual">—</span>
+          <p class="prob-delta" id="prob-delta"></p>
+        </div>
+        <p class="prob-nota" data-i18n="prob.nota">Sube cuando el Estado actúa y cuando crece el voto por el «Sí»; baja sola con el paso de los días si no pasa nada.</p>
+      </div>
+
+      <div class="g-caja" id="curva"></div>
+
+      <div class="prob-pie">
+        <span class="clave"><i class="raya-hito" aria-hidden="true"></i><span data-i18n="prob.hito">día con acto oficial</span></span>
+        <span id="prob-rango"></span>
+      </div>
+
+      <details class="desplegable">
+        <summary data-i18n="prob.verDatos">Ver la fórmula y los datos</summary>
+
+        <div class="formula">
+          <p data-i18n="prob.formulaIntro">El número no se mide: se calcula. Estos son todos sus ingredientes, y los parámetros se editan en <code>data/config.js</code>.</p>
+          <code id="prob-formula"></code>
+          <p data-i18n="prob.formulaPie">Cada novedad oficial empuja según su tipo —una ley pesa más que un comunicado— y se apaga a la mitad cada 45 días. El voto recién manda sobre el resultado cuando hay suficientes votos como para no ser ruido.</p>
+        </div>
+
+        <div class="tabla-envoltorio">
+          <table class="tabla-datos" id="tabla-prob">
+            <caption class="saltar" data-i18n="prob.tablaTitulo">Serie diaria de probabilidad</caption>
+            <thead>
+              <tr>
+                <th scope="col" data-i18n="prob.colFecha">Fecha</th>
+                <th scope="col" data-i18n="prob.colProb">Probabilidad</th>
+                <th scope="col" data-i18n="prob.colBase">Voto</th>
+                <th scope="col" data-i18n="prob.colImpulso">Novedades</th>
+                <th scope="col" data-i18n="prob.colVotos">Votos</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-prob-cuerpo"></tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="seccion" id="mercado" data-revelar>
+    <div class="seccion-cabecera">
+      <p class="etiqueta" data-i18n="mercado.eyebrow">Participación ciudadana</p>
+      <h2 data-i18n="mercado.titulo">Mercado de opinión</h2>
+      <p class="seccion-bajada" data-i18n="mercado.bajada">Una pregunta, dos respuestas, un voto por dispositivo. Tu voto entra en la curva de arriba: eso es lo que mantiene viva esta página.</p>
+    </div>
+
+    <div class="tarjeta">
+      <p class="pregunta" data-i18n="mercado.pregunta">¿Creés que este gobierno recupera la soberanía de las Islas Malvinas antes de las elecciones presidenciales de 2027?</p>
+
+      <div class="leyenda">
+        <span class="par"><i class="punto si"></i><span data-i18n="mercado.si">Sí</span> — <b class="cifra" id="pct-si">50%</b></span>
+        <span class="par"><i class="punto no"></i><span data-i18n="mercado.no">No</span> — <b class="cifra" id="pct-no">50%</b></span>
+      </div>
+
+      <div class="grafico" id="grafico-mercado" role="img" aria-label="Resultado de la votación">
+        <div class="segmento si" id="barra-si" style="width:50%"></div>
+        <div class="segmento no" id="barra-no" style="width:50%"></div>
+      </div>
+
+      <div class="votos-meta">
+        <span id="votos-total"></span>
+        <span id="mercado-cierre"></span>
+        <span class="chip chip-local" data-local hidden data-i18n="mercado.local">modo local</span>
+      </div>
+
+      <div class="acciones">
+        <button type="button" class="boton voto-si" id="btn-si" aria-pressed="false" data-i18n="mercado.votarSi">Votar Sí</button>
+        <button type="button" class="boton voto-no" id="btn-no" aria-pressed="false" data-i18n="mercado.votarNo">Votar No</button>
+      </div>
+
+      <p id="mercado-estado" role="status" aria-live="polite"></p>
+
+      <p class="aviso" data-i18n="mercado.aviso">Esto es una encuesta de opinión, no un mercado financiero: sin dinero, sin apuestas y sin premios.</p>
+      <p class="votos-meta" data-local hidden><span data-i18n="mercado.localAyuda">No hay contador compartido configurado: los votos se guardan sólo en este navegador.</span></p>
+    </div>
+  </section>
+
+  <section class="seccion" id="novedades" data-revelar>
+    <div class="seccion-cabecera">
+      <p class="etiqueta" id="sello-actualizado"></p>
+      <h2 data-i18n="novedades.titulo">Novedades oficiales</h2>
+      <p class="seccion-bajada" data-i18n="novedades.bajada">Leyes, normas y acciones del Estado vinculadas a la causa. Se actualiza cada 24 horas desde fuentes oficiales; enlazamos siempre al documento original.</p>
+    </div>
+    <div class="tarjeta carrusel">
+      <div class="carrusel-barra">
+        <p class="etiqueta" data-i18n="novedades.repasar">Deslizá para repasar</p>
+        <div class="carrusel-flechas">
+          <button type="button" class="flecha" id="nov-anterior" hidden
+                  data-i18n-attr="aria-label:novedades.anterior" aria-label="Novedad anterior">
+            <span aria-hidden="true">&#8249;</span>
+          </button>
+          <button type="button" class="flecha" id="nov-siguiente" hidden
+                  data-i18n-attr="aria-label:novedades.siguiente" aria-label="Novedad siguiente">
+            <span aria-hidden="true">&#8250;</span>
+          </button>
+        </div>
+      </div>
+
+      <ul class="tira" id="lista-novedades" role="group"
+          data-i18n-attr="aria-label:novedades.tira" aria-label="Novedades oficiales, lista horizontal"></ul>
+    </div>
+  </section>
+
+  <section class="seccion" id="widget" data-revelar>
+    <div class="seccion-cabecera">
+      <p class="etiqueta" data-i18n="widget.eyebrow">Para embeber</p>
+      <h2 data-i18n="widget.titulo">Widget para streamers y sitios</h2>
+      <p class="seccion-bajada" data-i18n="widget.bajada">El mismo motor sirve como fuente de navegador en OBS (con fondo transparente) y como iframe embebible en cualquier web. Se configura por parámetros en la URL: modo, tema, idioma, color y tamaño.</p>
+    </div>
+
+    <div class="rejilla-widget">
+      <div class="tarjeta">
+        <h3 data-i18n="widget.obs">Overlay para streaming</h3>
+        <p class="detalle" data-i18n="widget.obsDetalle">Agregalo en OBS como Fuente de navegador con tema transparente.</p>
+        <code class="snippet" id="snippet-obs"></code>
+        <div class="fila-copiar">
+          <button type="button" class="boton chico" data-copiar="#snippet-obs" data-i18n="widget.copiar">Copiar</button>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h3 data-i18n="widget.web">Embebido en una web</h3>
+        <p class="detalle" data-i18n="widget.webDetalle">Pegá este código en cualquier sitio, sin instalar nada.</p>
+        <code class="snippet" id="snippet-web"></code>
+        <div class="fila-copiar">
+          <button type="button" class="boton chico" data-copiar="#snippet-web" data-i18n="widget.copiar">Copiar</button>
+        </div>
+      </div>
+    </div>
+
+    <a class="cta" href="widget-builder.html" data-i18n="widget.cta">Abrir el editor de widget</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="envoltorio pie-fila">
+    <span class="odometro">
+      <span id="contador-visitas">—</span>
+      <span class="etiqueta" data-i18n="pie.visitas">visitas</span>
+      <span class="chip chip-local" data-local hidden data-i18n="mercado.local">modo local</span>
+    </span>
+    <span data-i18n="pie.aviso">Sitio ciudadano independiente. No es un canal oficial del Estado argentino.</span>
+    <a href="https://github.com/malvinas-argentinas/prometeo" target="_blank" rel="noopener noreferrer" data-i18n="pie.codigo">Código abierto</a>
+  </div>
+</footer>
+
+<script src="data/config.js"></script>
+<script src="data/novedades.js"></script>
+<script src="data/historial.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/tipografia.js"></script>
+<script src="assets/js/tiempo.js"></script>
+<script src="assets/js/contador.js"></script>
+<script src="assets/js/mercado.js"></script>
+<script src="assets/js/novedades.js"></script>
+<script src="assets/js/modelo.js"></script>
+<script src="assets/js/grafico.js"></script>
+<script src="assets/js/animaciones.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
