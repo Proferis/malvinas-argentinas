@@ -8,7 +8,7 @@
  */
 window.HISTORIAL = {
   "desde": "2026-09-03",
-  "actualizado": "2026-09-14T15:52:59.954Z",
+  "actualizado": "2026-09-15T14:19:44.868Z",
   "puntos": [
     {
       "fecha": "2026-09-05",
@@ -57,6 +57,11 @@ window.HISTORIAL = {
     },
     {
       "fecha": "2026-09-14",
+      "votosSi": 0,
+      "votosNo": 0
+    },
+    {
+      "fecha": "2026-09-15",
       "votosSi": 0,
       "votosNo": 0
     }
