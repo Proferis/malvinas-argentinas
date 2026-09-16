@@ -1,6 +1,15 @@
 window.NOVEDADES = {
-  "actualizado": "2026-09-05T11:48:46.080Z",
+  "actualizado": "2026-09-16T14:11:56.038Z",
   "items": [
+    {
+      "fecha": "2026-09-15T03:00:00.000Z",
+      "titulo": "Cuestión Malvinas: la Cancillería argentina rechaza la guía del Gobierno británico sobre actividades comerciales con las Islas Malvinas e intensifica las medidas contra la explotación ilegal de nuestros recursos",
+      "resumen": "Estas acciones unilaterales británicas vulneran abiertamente la Resolución 31/49 de la Asamblea General de las Naciones...",
+      "tipo": "Comunicado",
+      "fuente": "Cancillería Argentina",
+      "url": "https://www.cancilleria.gob.ar/es/actualidad/noticias/cuestion-malvinas-la-cancilleria-argentina-rechaza-la-guia-del-gobierno",
+      "origen": "scraper"
+    },
     {
       "fecha": "2026-09-03T21:00:00-03:00",
       "titulo": "Cadena Nacional del Presidente Javier Milei sobre la Causa Malvinas",
