@@ -14,7 +14,7 @@ window.CONFIG = {
   },
 
   contador: {
-    endpoint: "",
+    endpoint: "https://prometeo-contador.cristianivannsanchez.workers.dev",
     claves: { visitas: "visitas", si: "voto_si", no: "voto_no" }
   },
 
