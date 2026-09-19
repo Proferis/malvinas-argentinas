@@ -9,7 +9,7 @@ binding = "CONTADOR"
 id = "PEGAR_ID_DEL_NAMESPACE"
 
 [vars]
-ORIGEN = "https://tu-sitio.ar"
+ORIGEN = "https://proferis.github.io"
 
 # La sal para hashear IPs va como secreto, no acá:
 #   npx wrangler secret put SAL

@@ -52,6 +52,6 @@ window.CONFIG = {
     }
   },
 
-  repo: "https://github.com/malvinas-argentinas/prometeo",
+  repo: "https://github.com/Proferis/malvinas-argentinas",
   baseWidget: "widget.html"
 };
