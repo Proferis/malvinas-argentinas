@@ -43,7 +43,12 @@ function json(datos, env, estado = 200) {
 
 async function huella(request, env, sufijo) {
   const ip = request.headers.get("CF-Connecting-IP") || "sin-ip";
-  const datos = new TextEncoder().encode(`${env.SAL || "prometeo"}:${ip}:${sufijo}`);
+  // SAL DEBE estar configurado con: npx wrangler secret put SAL
+  // Sin SAL definida, la privacidad de las IPs queda comprometida.
+  if (!env.SAL) {
+    throw new Error("FATAL: SAL secret is not configured. Run: npx wrangler secret put SAL");
+  }
+  const datos = new TextEncoder().encode(`${env.SAL}:${ip}:${sufijo}`);
   const digest = await crypto.subtle.digest("SHA-256", datos);
   return [...new Uint8Array(digest)].slice(0, 12)
     .map((b) => b.toString(16).padStart(2, "0")).join("");

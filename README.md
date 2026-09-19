@@ -107,11 +107,11 @@ Para tener números compartidos hay que desplegar el Worker propio incluido en
 ```bash
 cd worker
 npx wrangler kv namespace create CONTADOR   # pegá el id en wrangler.toml
-npx wrangler secret put SAL                 # sal para hashear IPs
+npx wrangler secret put SAL                 # sal para hashear IPs (OBLIGATORIO)
 npx wrangler deploy
 ```
 
-Después, en `data/config.js`:
+⚠️ **IMPORTANTE: Configurar SAL es obligatorio.** Sin el secreto SAL, el Worker rechazará todas las solicitudes. La sal se usa para hashear direcciones IP de forma que nunca se guarden en claro. Si no se configura, la privacidad de los usuarios queda comprometida. Después, en `data/config.js`:
 
 ```js
 contador: { endpoint: "https://prometeo-contador.TU-CUENTA.workers.dev", ... }
@@ -267,7 +267,11 @@ depende de que la animación corra.
 
 - **Un voto por IP** con el Worker desplegado; sin él, un voto por navegador y la
   interfaz lo aclara con la etiqueta `modo local`. En los dos casos es un
-  termómetro simbólico, no una encuesta con validez estadística.
+  termómetro simbólico, no una encuesta con validez estadística. El tope por IP
+  tiene límites conocidos: oficinas enteras comparten una IP (cuentan como un voto),
+  y conexiones móviles que cambian de red cuentan como múltiples votos. Las huellas
+  de IP se truncan a 12 bytes de un hash SHA-256 salado, donde la sal se configura
+  con `npx wrangler secret put SAL` —sin este secreto, la privacidad queda débil.
 - El mercado de opinión **no involucra dinero, apuestas ni premios**: encuadrarlo
   como apuesta lo metería bajo la regulación de juegos de azar.
 - **La curva no predice nada.** Es una fórmula publicada sobre dos insumos
