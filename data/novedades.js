@@ -1,6 +1,15 @@
 window.NOVEDADES = {
-  "actualizado": "2026-09-16T14:11:56.038Z",
+  "actualizado": "2026-09-23T14:14:05.031Z",
   "items": [
+    {
+      "fecha": "2026-09-22T03:00:00.000Z",
+      "titulo": "Cuestión Malvinas: La República Argentina protesta ante el Reino Unido por la ilegítima extensión de licencias hidrocarburíferas en la Plataforma Continental Argentina",
+      "resumen": "Por instrucción del Canciller Pablo Quirno, en el día de la fecha se presentó una nota formal de protesta a la embajada...",
+      "tipo": "Comunicado",
+      "fuente": "Cancillería Argentina",
+      "url": "https://www.cancilleria.gob.ar/es/actualidad/noticias/cuestion-malvinas-la-republica-argentina-protesta-ante-el-reino-unido-por-la",
+      "origen": "scraper"
+    },
     {
       "fecha": "2026-09-15T03:00:00.000Z",
       "titulo": "Cuestión Malvinas: la Cancillería argentina rechaza la guía del Gobierno británico sobre actividades comerciales con las Islas Malvinas e intensifica las medidas contra la explotación ilegal de nuestros recursos",
