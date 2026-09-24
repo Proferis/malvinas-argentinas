@@ -1,5 +1,5 @@
 window.NOVEDADES = {
-  "actualizado": "2026-09-23T14:14:05.031Z",
+  "actualizado": "2026-09-24T14:12:21.877Z",
   "items": [
     {
       "fecha": "2026-09-22T03:00:00.000Z",
@@ -8,6 +8,15 @@ window.NOVEDADES = {
       "tipo": "Comunicado",
       "fuente": "Cancillería Argentina",
       "url": "https://www.cancilleria.gob.ar/es/actualidad/noticias/cuestion-malvinas-la-republica-argentina-protesta-ante-el-reino-unido-por-la",
+      "origen": "scraper"
+    },
+    {
+      "fecha": "2026-09-22T03:00:00.000Z",
+      "titulo": "ONU: Réplica del Canciller Pablo Quirno a los dichos del Primer Ministro Británico por la Cuestión Malvinas",
+      "resumen": "El Canciller Pablo Quirno ejerció hoy el derecho a réplica ante la Asamblea General de las Naciones Unidas para...",
+      "tipo": "Comunicado",
+      "fuente": "Cancillería Argentina",
+      "url": "https://www.cancilleria.gob.ar/es/actualidad/noticias/onu-replica-del-canciller-pablo-quirno-los-dichos-del-primer-ministro-britanico",
       "origen": "scraper"
     },
     {
