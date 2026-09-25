@@ -95,27 +95,6 @@ de dejar puntos viejos calculados con una fórmula vieja.
 La serie empieza el 3 de septiembre de 2026. No hay datos anteriores al anuncio:
 antes no había promesa que seguir.
 
-## El contador (sin API de terceros)
-
-Sin configurar nada, el sitio funciona en **modo local**: las visitas y los votos
-se guardan en el navegador de cada persona y la interfaz lo aclara con la
-etiqueta `modo local`, para no mostrar un número privado como si fuera público.
-
-Para tener números compartidos hay que desplegar el Worker propio incluido en
-[`worker/`](worker/):
-
-```bash
-cd worker
-npx wrangler kv namespace create CONTADOR   # pegá el id en wrangler.toml
-npx wrangler secret put SAL                 # sal para hashear IPs (OBLIGATORIO)
-npx wrangler deploy
-```
-
-⚠️ **IMPORTANTE: Configurar SAL es obligatorio.** Sin el secreto SAL, el Worker rechazará todas las solicitudes. La sal se usa para hashear direcciones IP de forma que nunca se guarden en claro. Si no se configura, la privacidad de los usuarios queda comprometida. Después, en `data/config.js`:
-
-```js
-contador: { endpoint: "https://prometeo-contador.TU-CUENTA.workers.dev", ... }
-```
 
 ### Un voto por IP
 
@@ -142,22 +121,6 @@ contrato de rutas. Y el tope por IP tiene los límites de siempre: una oficina
 entera comparte IP y cuenta como un voto, y un teléfono que cambia de red cuenta
 como dos.
 
-Las reglas se verifican sin desplegar nada, con KV reemplazado por un Map:
-
-```bash
-node worker/prueba.mjs
-```
-
-Mientras no haya endpoint configurado, el sitio corre en modo local y el punto
-diario del historial se registra con cero votos: la curva se mueve sólo por las
-novedades hasta que el Worker esté arriba.
-
-## Las novedades
-
-`scripts/scrape.mjs` recorre fuentes oficiales, filtra por palabras clave
-(`malvinas`, `atlántico sur`, `georgias del sur`, `sándwich del sur`) y reescribe
-`data/novedades.js`. Guarda sólo metadatos —título, fecha, copete y enlace al
-original—, nunca el texto completo.
 
 Fuentes implementadas y verificadas:
 
@@ -201,11 +164,6 @@ completo está a un clic, en la fuente original.
   lenguaje tipográfico de la bandera que los jugadores desplegaron en el Mundial
   2026, no el objeto ni la foto.
 
-Los SVG se regeneran con:
-
-```bash
-node scripts/graficos.mjs
-```
 
 ## Los dos conmutadores
 
