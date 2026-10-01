@@ -1,6 +1,15 @@
 window.NOVEDADES = {
-  "actualizado": "2026-09-24T14:12:21.877Z",
+  "actualizado": "2026-10-01T16:26:11.662Z",
   "items": [
+    {
+      "fecha": "2026-10-01T03:00:00.000Z",
+      "titulo": "Sobre la Cuestión Malvinas: Comunicado oficial de la República Argentina",
+      "resumen": "La República Argentina rechaza que el Reino Unido caracterice el recurso argentino al arbitraje en el marco de la...",
+      "tipo": "Comunicado",
+      "fuente": "Cancillería Argentina",
+      "url": "https://www.cancilleria.gob.ar/es/actualidad/noticias/sobre-la-cuestion-malvinas-comunicado-oficial-de-la-republica-argentina",
+      "origen": "scraper"
+    },
     {
       "fecha": "2026-09-22T03:00:00.000Z",
       "titulo": "Cuestión Malvinas: La República Argentina protesta ante el Reino Unido por la ilegítima extensión de licencias hidrocarburíferas en la Plataforma Continental Argentina",
