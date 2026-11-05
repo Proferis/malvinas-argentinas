@@ -1,6 +1,15 @@
 window.NOVEDADES = {
-  "actualizado": "2026-10-01T16:26:11.662Z",
+  "actualizado": "2026-11-05T17:22:53.313Z",
   "items": [
+    {
+      "fecha": "2026-11-05T03:00:00.000Z",
+      "titulo": "La XXX Cumbre Iberoamericana reafirma su respaldo a la reanudación de las negociaciones sobre la Cuestión de las Islas Malvinas",
+      "resumen": "En el marco de la XXX Cumbre Iberoamericana, celebrada en Madrid, España, los días 4 y 5 de noviembre de 2026, los...",
+      "tipo": "Comunicado",
+      "fuente": "Cancillería Argentina",
+      "url": "https://www.cancilleria.gob.ar/es/actualidad/noticias/la-xxx-cumbre-iberoamericana-reafirma-su-respaldo-la-reanudacion-de-las",
+      "origen": "scraper"
+    },
     {
       "fecha": "2026-10-01T03:00:00.000Z",
       "titulo": "Sobre la Cuestión Malvinas: Comunicado oficial de la República Argentina",
