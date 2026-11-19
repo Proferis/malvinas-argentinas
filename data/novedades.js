@@ -1,6 +1,15 @@
 window.NOVEDADES = {
-  "actualizado": "2026-11-05T17:22:53.313Z",
+  "actualizado": "2026-11-19T18:15:01.763Z",
   "items": [
+    {
+      "fecha": "2026-11-19T03:00:00.000Z",
+      "titulo": "Cuestión Malvinas: La provincia de Tucumán entregó a la Cancillería argentina un documento histórico",
+      "resumen": "Presidido por el Canciller Pablo Quirno, se realizó hoy en el Palacio San Martín el acto de entrega de un documento...",
+      "tipo": "Comunicado",
+      "fuente": "Cancillería Argentina",
+      "url": "https://www.cancilleria.gob.ar/es/actualidad/noticias/cuestion-malvinas-la-provincia-de-tucuman-entrego-la-cancilleria-argentina-un",
+      "origen": "scraper"
+    },
     {
       "fecha": "2026-11-05T03:00:00.000Z",
       "titulo": "La XXX Cumbre Iberoamericana reafirma su respaldo a la reanudación de las negociaciones sobre la Cuestión de las Islas Malvinas",
